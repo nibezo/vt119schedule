@@ -12,6 +12,14 @@ status = datetime.date(dt.year, dt.month, dt.day).isocalendar()[1] % 2
 status_z = "Знаменатель🔴\n\n"
 status_c = "Числитель🟦\n\n"
 
+# if today is weekend, change week status
+weekday = datetime.datetime.today().weekday()
+if weekday == 5 or weekday == 6:
+	if status == 1:
+		status = 0
+	else:
+		status = 1
+
 
 @bot.message_handler(bot.text_contains_filter(["Start", "Начало", "Начать"]))
 async def start(event: bot.SimpleBotEvent):
