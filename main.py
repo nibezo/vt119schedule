@@ -34,7 +34,7 @@ async def start(event: bot.SimpleBotEvent):
 async def start(event: bot.SimpleBotEvent):
 	if status != 1:
 		await event.answer(
-			f"{status_z}8:30-10:00: Экономика, лк, Г-3: Вахромеева М.П.\n\n10:20-11:50: ВСВП, лк, 404-2, "
+			f"{status_z}1. 8:30-10:00: Экономика, лк, Г-3: Вахромеева М.П.\n\n2. 10:20-11:50: ВСВП, лк, 404-2, "
 			f"Буланкин В.Б")
 	else:
 		await event.answer(f"{status_c}1. 8:30-10:00: Физ-ра\n\n2. 10:20-11:50: ВСВП, лк, 404-2, Буланкин В.Б\n\n3. "
