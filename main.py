@@ -2,6 +2,7 @@ import datetime
 import logging
 from vkwave.bots import (SimpleLongPollBot)
 from vktoken import token
+import time
 
 bot = SimpleLongPollBot(tokens=token, group_id=207028531)
 logging.basicConfig(level="DEBUG")
@@ -19,6 +20,17 @@ if weekday == 5 or weekday == 6:
 		status = 0
 	else:
 		status = 1
+
+while 0 == 0:
+	dt_loop = datetime.datetime.today()
+	if dt_loop.weekday() != 4 or dt_loop.weekday() != 5 and dt_loop.hour == 19 and dt_loop.minute == 0 and dt_loop.second == 0:
+		if dt.weekday() == 0:  # Monday
+			async def monday(event: bot.SimpleBotEvent):
+				if status != 1:
+					await event.answer(
+						f"{status_z}1. 8:30-10:00: Экономика, лк, Г-3: Вахромеева М.П.\n\n2. 10:20-11:50: ВСВП, лк, 404-2, "
+						f"Буланкин В.Б")
+	time.sleep(1)
 
 
 @bot.message_handler(bot.text_contains_filter(["Start", "Начало", "Начать"]))
