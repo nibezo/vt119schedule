@@ -1,8 +1,7 @@
-import datetime
 import logging
 from vkwave.bots import (SimpleLongPollBot)
 from vktoken import token
-import time
+from servises import get_status
 
 bot = SimpleLongPollBot(tokens=token, group_id=207028531)
 logging.basicConfig(level="DEBUG")
@@ -14,24 +13,6 @@ status_c = "Числитель🟦\n\n"
 async def start(event: bot.SimpleBotEvent):
 	await event.answer("Привет. Отправь мне день недели и я дам на него расписание согласно Ч/З недели. Если сегодня "
 					   "выходной, то дам расписание согласно статусу след. недели.\n\nCode: github.com/nibezo/vt119schedule")
-
-
-def get_status():
-	# status of the week, if 0 - Знаменатель, if 1 - Числитель
-	dt = datetime.datetime.today()
-	status = datetime.date(dt.year, dt.month, dt.day).isocalendar()[1] % 2
-
-	# if today is weekend, change week status
-	weekday = datetime.datetime.today().weekday()
-	print(weekday)
-	print(status)
-	if weekday == 5 or weekday == 6:
-		if status == 1:
-			status = 0
-		else:
-			status = 1
-	return status
-	print(status)
 
 
 """Shit code for schedule sending"""
